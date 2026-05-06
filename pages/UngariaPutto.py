@@ -70,7 +70,7 @@ st.markdown("""
 st.title('LOTO Ungaria 8/20 PREDICTION')
 
 # Incaracare date
-file_path = 'ung820.csv'
+file_path = 'Ung100-12.csv'
 data = pd.read_csv(file_path)
 X = data.iloc[:, 0].values.reshape(-1, 1)  # Numarul extragerii
 y = data.iloc[:, 1:].values  # Numerele extrase

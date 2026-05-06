@@ -71,7 +71,7 @@ st.markdown("""
 st.title('LOTO Italia 10/20 PREDICTION')
 
 # Incaracare date
-file_path = 'ita1020.csv'
+file_path = 'italast200.csv'
 data = pd.read_csv(file_path)
 X = data.iloc[:, 0].values.reshape(-1, 1)  # Numarul extragerii
 y = data.iloc[:, 1:].values  # Numerele extrase
