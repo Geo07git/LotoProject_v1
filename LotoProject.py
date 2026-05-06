@@ -63,7 +63,7 @@ pg = st.navigation(
 )
 
 # --- SHARED ON ALL PAGES ---
-st.image("assets/lotto.png", width=120)
+#st.image("assets/lotto.png", width=120)
 st.sidebar.markdown("This is one of Georgeo07's projects. ❤️")
 
 
