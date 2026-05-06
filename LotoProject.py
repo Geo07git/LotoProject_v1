@@ -9,7 +9,7 @@ about_page = st.Page(
     default=True,
 )
 project_1_page = st.Page(
-    "pages/WinForlife.py",
+    "pages/WinForLife.py",
     title="Italia WinforLife",
     icon=":material/flag:",
 )
