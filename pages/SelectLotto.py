@@ -133,11 +133,11 @@ def build_models():
         'Bagging':      BaggingClassifier(n_estimators=50, random_state=SEED),
         'CatBoost':     CatBoostClassifier(verbose=0, random_state=SEED),
         'MLP':          MLPClassifier(random_state=SEED, max_iter=50),
-        'XGBoost':      XGBClassifier(
-            n_estimators=200, learning_rate=0.1, max_depth=6,
-            subsample=0.8, colsample_bytree=0.8,
-            random_state=SEED, eval_metric='logloss', verbosity=0
-        )
+        #'XGBoost':      XGBClassifier(
+            #n_estimators=200, learning_rate=0.1, max_depth=6,
+            #subsample=0.8, colsample_bytree=0.8,
+            #random_state=SEED, eval_metric='logloss', verbosity=0
+        #)
     }
 
 # ─────────────────────────────────────────────
@@ -281,7 +281,7 @@ with tab2:
     freq_df['Ultima apariție (extragere)'] = freq_df['Număr'].apply(
         lambda n: int(data.iloc[np.where(y == n)[0][-1], 0]) if len(np.where(y == n)[0]) > 0 else '-'
     )
-    st.dataframe(freq_df, use_container_width=True)
+    st.dataframe(freq_df, width='stretch')
 
     # Top 10 cele mai frecvente
     top10 = freq_df.nlargest(10, 'Apariții')
