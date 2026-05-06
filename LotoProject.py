@@ -1,4 +1,7 @@
 import streamlit as st
+with st.sidebar:
+    st.image("assets/lotto.png", width=120)
+    st.markdown("This is one of Georgeo07's projects. ❤️")
 
 
 # --- PAGE SETUP ---
@@ -64,7 +67,7 @@ pg = st.navigation(
 
 # --- SHARED ON ALL PAGES ---
 #st.image("assets/lotto.png", width=120)
-st.sidebar.markdown("This is one of Georgeo07's projects. ❤️")
+#st.sidebar.markdown("This is one of Georgeo07's projects. ❤️")
 
 
 # --- RUN NAVIGATION ---
