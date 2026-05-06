@@ -175,9 +175,9 @@ def predict_numbers_and_accuracy(models, X, y, nums_req, max_num):
 
             next_x = np.array([[X.max() + 1]])
             if model_name == 'XGBoost':
-                pred = int(model.predict(next_x)[0]) + 1
+                pred = int(model.predict(next_x).squeeze()) + 1
             else:
-                pred = int(model.predict(next_x)[0])
+                pred = int(model.predict(next_x).squeeze())
             predictions.append(pred)
 
         # Numere unice în intervalul valid
