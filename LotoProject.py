@@ -1,6 +1,7 @@
 import streamlit as st
+
 with st.sidebar:
-    st.image("assets/lotto.png", width=120)
+    #st.image("assets/lotto.png", width=120)
     st.markdown("This is one of Georgeo07's projects. ❤️")
 
 
