@@ -1,5 +1,4 @@
 import streamlit as st
-st.set_page_config(layout="wide")
 
 # --- PAGE SETUP ---
 about_page = st.Page(
@@ -49,9 +48,6 @@ final_page = st.Page(
     icon=":material/insights:",
 )
 
-# --- NAVIGATION SETUP [WITHOUT SECTIONS] ---
-# pg = st.navigation(pages=[about_page, project_1_page, project_2_page])
-
 # --- NAVIGATION SETUP [WITH SECTIONS]---
 pg = st.navigation(
     {
@@ -63,7 +59,7 @@ pg = st.navigation(
 )
 
 # --- SHARED ON ALL PAGES ---
-#st.image("assets/lotto.png", width=120)
+st.logo("assets/lotto.png")
 st.markdown("This is one of Georgeo07's projects. ❤️")
 
 # --- RUN NAVIGATION ---
