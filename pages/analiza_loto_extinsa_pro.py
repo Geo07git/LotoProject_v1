@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.multioutput import MultiOutputClassifier
+from xlsxwriter import Workbook
 
 st.set_page_config(page_title="Analiza Loto Extinsă", layout="wide", page_icon="🎯")
 st.title("🎯 Analiza Loto Extinsă — Pro")

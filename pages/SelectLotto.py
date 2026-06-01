@@ -29,8 +29,8 @@ warnings.filterwarnings('ignore')
 # CONFIG per loterie
 # ─────────────────────────────────────────────
 LOTO_CONFIG = {
-    "Romania - Joker":      {"file": "lotoJoker.csv", "nums": 5, "max_num": 45},
     "Romania 6/49":         {"file": "loto649.csv",   "nums": 6, "max_num": 49},
+    "Romania - Joker":      {"file": "lotoJoker.csv", "nums": 5, "max_num": 45},
     "Romania 5/40":         {"file": "loto540.csv",   "nums": 5, "max_num": 40},
 }
 SEED = 2024
