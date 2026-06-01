@@ -60,7 +60,7 @@ pg = st.navigation(
 
 # --- SHARED ON ALL PAGES ---
 st.logo("assets/lotto.png")
-st.markdown("This is one of Georgeo07's projects. ❤️")
+st.sidebar.markdown("This is one of Georgeo07's projects. ❤️")
 
 # --- RUN NAVIGATION ---
 pg.run()
