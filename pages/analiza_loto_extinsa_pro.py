@@ -329,8 +329,8 @@ if uploaded:
         st.subheader("📤 Exportă toate rezultatele în Excel")
         output = io.BytesIO()
         with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
-            pd.DataFrame(top_nums, columns=["Top Numere"]).to_excel(writer, index=False, sheet_name="Predicție ML")
-            pred_df.to_excel(writer, index=False, sheet_name="Predicție ML", startrow=len(pred_df) + 2)            
+            pd.DataFrame(top_nums, columns=["Top Numere"]).to_excel(writer, index=False, sheet_name="Top Recomandări")
+            pred_df.to_excel(writer, index=False, sheet_name="Predicție ML")            
             if not combo_df.empty:
                 combo_df.to_excel(writer, index=False, sheet_name="Top Combinații")
             extract_df.to_excel(writer, index=False, sheet_name="Analiză Extrageri")
@@ -353,10 +353,10 @@ if uploaded:
         st.download_button(
             "📥 Descarcă Excel complet",
             data=output.getvalue(),
-            file_name="analiza_loto_extinsa_pro.xlsx",
+            file_name="Analiza_loto_extinsa_pro.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
-        st.success("✅ Fișierul conține 6 sheet-uri: Predicție ML, Top Combinații, Analiză Extrageri, Tendințe Generale, Numere Individuale, Backtest.")
+        st.success("✅ Fișierul conține 7 sheet-uri: Top Recomandări, Predicție ML, Top Combinații, Analiză Extrageri, Tendințe Generale, Numere Individuale, Backtest.")
 
 else:
     st.info("🔼 Încarcă un fișier .csv sau .xlsx pentru a începe analiza.")
