@@ -329,8 +329,8 @@ if uploaded:
         st.subheader("📤 Exportă toate rezultatele în Excel")
         output = io.BytesIO()
         with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
-            pred_df.to_excel(writer, index=False, sheet_name="Predicție ML")
-            pd.DataFrame({"Top Numere": top_nums}).to_excel(writer, index=False, sheet_name="Predicție ML", startrow=len(pred_df) + 2)
+            pd.DataFrame(top_nums, columns=["Top Numere"]).to_excel(writer, index=False, sheet_name="Predicție ML")
+            pred_df.to_excel(writer, index=False, sheet_name="Predicție ML", startrow=len(pred_df) + 2)            
             if not combo_df.empty:
                 combo_df.to_excel(writer, index=False, sheet_name="Top Combinații")
             extract_df.to_excel(writer, index=False, sheet_name="Analiză Extrageri")
