@@ -9,6 +9,7 @@ import plotly.graph_objects as go
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.multioutput import MultiOutputClassifier
 from xlsxwriter import Workbook
+from datetime import datetime
 
 st.set_page_config(page_title="Analiza Loto Extinsă", layout="wide", page_icon="🎯")
 st.title("🎯 Analiza Loto Extinsă — Pro")
@@ -349,11 +350,11 @@ if uploaded:
                 for i, col in enumerate(sheet_df.columns):
                     width = max(len(str(col)), sheet_df[col].astype(str).map(len).max()) + 2
                     worksheet.set_column(i, i, min(width, 40))
-
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
         st.download_button(
             "📥 Descarcă Excel complet",
             data=output.getvalue(),
-            file_name="Analiza_loto_extinsa_pro.xlsx",
+            file_name=f"Analiza_loto_extinsa_pro_{timestamp}.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
         st.success("✅ Fișierul conține 7 sheet-uri: Top Recomandări, Predicție ML, Top Combinații, Analiză Extrageri, Tendințe Generale, Numere Individuale, Backtest.")
