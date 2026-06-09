@@ -1,4 +1,6 @@
 import streamlit as st
+import pytz
+from datetime import datetime
 
 # --- PAGE SETUP ---
 about_page = st.Page(
@@ -60,6 +62,14 @@ pg = st.navigation(
 
 # --- SHARED ON ALL PAGES ---
 st.logo("assets/lotto.png")
+
+# ─────────────────────────────────────────────
+# FOOTER
+# ─────────────────────────────────────────────
+tz  = pytz.timezone('Europe/Bucharest')
+now = datetime.now(tz).strftime("%d-%m-%Y")
+st.sidebar.caption(f"🕒 Baza de date actualizată pentru tragerea din {now}")
+
 st.sidebar.markdown("This is one of Georgeo07's projects. ❤️")
 
 # --- RUN NAVIGATION ---

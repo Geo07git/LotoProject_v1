@@ -98,7 +98,7 @@ except FileNotFoundError:
 try:
     data = load_data(file_path)
     st.write(f"📂 **Fișier:** `{file_path}`  🕒 **Ultima modificare:** {last_mod}")
-    st.dataframe(data.tail(5))
+    st.dataframe(data.tail(3))
 except FileNotFoundError:
     st.error("❌ Fișierul nu a fost găsit. Verifică dacă există în folderul curent.")
     st.stop()

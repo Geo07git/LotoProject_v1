@@ -4,6 +4,7 @@ import numpy as np
 from itertools import combinations
 from collections import Counter
 import io
+import os
 import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.ensemble import RandomForestClassifier
@@ -13,6 +14,56 @@ from datetime import datetime
 
 st.set_page_config(page_title="Analiza Loto Extinsă", layout="wide", page_icon="🎯")
 st.title("🎯 Analiza Loto Extinsă — Pro")
+
+# ─────────────────────────────────────────────
+# CONFIG per loterie
+# ─────────────────────────────────────────────
+LOTO_CONFIG = {
+    "Romania 6/49":         {"file": "loto649.csv",   "nums": 6, "max_num": 49},
+    "Romania - Joker":      {"file": "lotoJoker.csv", "nums": 5, "max_num": 45},
+    "Romania 5/40":         {"file": "loto540.csv",   "nums": 5, "max_num": 40},
+}
+
+# ─────────────────────────────────────────────
+# SELECTARE LOTERIE + INCARCARE DATE
+# ─────────────────────────────────────────────
+st.subheader("Selectează și încarcă baza de date")
+
+selected_label = st.selectbox("📂 **Alege loteria:**", list(LOTO_CONFIG.keys()))
+cfg = LOTO_CONFIG[selected_label]
+file_path  = cfg["file"]
+nums_req   = cfg["nums"]
+max_num    = cfg["max_num"]
+
+@st.cache_data
+def load_data(path):
+    return pd.read_csv(path)
+
+try:
+    last_mod = datetime.fromtimestamp(os.path.getmtime(file_path)).strftime("%d %B %Y, ora %H:%M")
+except FileNotFoundError:
+    last_mod = "nedisponibilă"
+
+try:
+    data = load_data(file_path)
+    st.write(f"📂 **Fișier:** `{file_path}`  🕒 **Ultima modificare:** {last_mod}")
+    st.dataframe(data.tail(3))
+except FileNotFoundError:
+    st.error("❌ Fișierul nu a fost găsit. Verifică dacă există în folderul curent.")
+    st.stop()
+
+X = data.iloc[:, 0].values.reshape(-1, 1)
+y = data.iloc[:, 1:].values
+
+most_recent_draw    = data.iloc[-1, 0]
+most_recent_numbers = data.iloc[-1, 1:].tolist()
+
+st.markdown(
+    f"<h2 style='color:#FFFF00;font-size:20px;"
+    f"text-shadow:0 0 10px #FFFF00,0 0 20px #FFFF00,0 0 30px #FFFF00;'>"
+    f"📌 Ultima Extragere: {most_recent_draw} | Numere: {most_recent_numbers}</h2>",
+    unsafe_allow_html=True
+)
 
 # ─────────────────────────────────────────────
 # UPLOAD
@@ -26,6 +77,8 @@ if uploaded:
         xls = pd.ExcelFile(uploaded)
         sheet = st.selectbox("Alege sheet-ul", xls.sheet_names)
         df = pd.read_excel(xls, sheet_name=sheet)
+else:
+    df = load_data(cfg["file"])
 
     # Validare structură
     if df.shape[1] < 3:
@@ -359,5 +412,5 @@ if uploaded:
         )
         st.success("✅ Fișierul conține 7 sheet-uri: Top Recomandări, Predicție ML, Top Combinații, Analiză Extrageri, Tendințe Generale, Numere Individuale, Backtest.")
 
-else:
-    st.info("🔼 Încarcă un fișier .csv sau .xlsx pentru a începe analiza.")
+#else:
+    #st.info("🔼 Încarcă un fișier .csv sau .xlsx pentru a începe analiza.")
