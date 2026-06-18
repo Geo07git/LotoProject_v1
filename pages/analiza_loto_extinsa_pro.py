@@ -103,8 +103,8 @@ else:
         lower = ((n - 1) // step) * step + 1
         return f"{lower}-{lower + step - 1}"
 
-    st.subheader("📋 Ultimele 3 extrageri")
-    st.dataframe(df.tail(3), width='stretch')
+    #st.subheader("📋 Ultimele 3 extrageri")
+    #st.dataframe(df.tail(3), width='stretch')
 
     # ─────────────────────────────────────────────
     # TABS
