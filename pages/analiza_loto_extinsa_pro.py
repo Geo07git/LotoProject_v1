@@ -412,5 +412,9 @@ else:
         )
         st.success("✅ Fișierul conține 7 sheet-uri: Top Recomandări, Predicție ML, Top Combinații, Analiză Extrageri, Tendințe Generale, Numere Individuale, Backtest.")
 
+if st.button("🎯 Sau alege alt motor de calcul", type="primary", width="stretch"):
+    st.switch_page("pages/SelectLotto.py")
+
+
 #else:
     #st.info("🔼 Încarcă un fișier .csv sau .xlsx pentru a începe analiza.")

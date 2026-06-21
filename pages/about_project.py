@@ -212,7 +212,7 @@ st.html("""
 """)
 
 if st.button("🎯 Intră în Generator + Calcule + Backtest", type="primary", width="stretch"):
-    st.switch_page("pages/SelectLotto.py")
+    st.switch_page("pages/analiza_loto_extinsa_pro.py")
 
 st.info("Jucați responsabil!")
 st.info("Accesul recomandat doar persoanelor peste 18 ani!")
